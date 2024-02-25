@@ -16,13 +16,13 @@ async function searchImages() {
     const response = await fetch(url);
     const data = await response.json();
 
-    if(page == 1){
+    if (page == 1) {
         searchResult.innerHTML = "";
     }
 
     const results = data.results;
 
-    results.map((result) =>{
+    results.map((result) => {
         const image = document.createElement("img");
         image.src = result.urls.small;
         const imageLink = document.createElement("a");
@@ -32,17 +32,17 @@ async function searchImages() {
         imageLink.appendChild(image);
         searchResult.appendChild(imageLink);
         console.log(data);
-        console.log(keyword);
+        // console.log(keyword);
     })
     searchshowMoreBtn.style.display = "block";
 }
-searchForm.addEventListener("submit", (e) =>{
+searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
     page = 1;
     searchImages();
 })
 
-searchshowMoreBtn.addEventListener("click", ()=>{
+searchshowMoreBtn.addEventListener("click", () => {
     page++;
     searchImages();
 })
